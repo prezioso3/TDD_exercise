@@ -9,7 +9,9 @@ from mock.RTC import RTC
 
 
 class ParkingGarageTest(unittest.TestCase):
-
-    def test_check_occupancy(self):
+    @patch.object(GPIO, "input")
+    def test_check_occupancy(self, mock_sensor_value):
+        mock_sensor_value.return_value = 49
         garage = ParkingGarage()
-        self.assertTrue(True, garage.check_occupancy(0))
+        res = garage.check_occupancy(mock_sensor_value)
+        self.assertTrue(res)
