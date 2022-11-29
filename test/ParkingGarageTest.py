@@ -9,7 +9,7 @@ from mock.RTC import RTC
 
 
 class ParkingGarageTest(unittest.TestCase):
-    """
-    Your test methods go here
-    """
-    pass
+
+    def test_check_occupancy(self):
+        garage = ParkingGarage()
+        self.assertTrue(True, garage.check_occupancy())
