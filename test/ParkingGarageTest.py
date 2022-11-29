@@ -12,4 +12,4 @@ class ParkingGarageTest(unittest.TestCase):
 
     def test_check_occupancy(self):
         garage = ParkingGarage()
-        self.assertTrue(True, garage.check_occupancy())
+        self.assertTrue(True, garage.check_occupancy(0))
