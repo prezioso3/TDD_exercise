@@ -48,7 +48,7 @@ class ParkingGarage:
         Calculates the number of occupied parking spots in the garage.
         :return: The number of occupied spots.
         """
-        pass
+        return 0
 
     def calculate_parking_fee(self, entry_time: str) -> float:
         """
