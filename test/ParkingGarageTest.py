@@ -15,3 +15,7 @@ class ParkingGarageTest(unittest.TestCase):
         garage = ParkingGarage()
         res = garage.check_occupancy(mock_sensor_value)
         self.assertTrue(res)
+
+    def test_occupied_spots(self):
+        garage = ParkingGarage()
+        self.assertEqual(0, garage.get_occupied_spots())
