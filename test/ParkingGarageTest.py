@@ -77,3 +77,7 @@ class ParkingGarageTest(unittest.TestCase):
     def test_invalid_calculate_parking_fee(self, mock_time_rtc):
         mock_time_rtc.return_value = '12:19:56'
         self.assertRaises(ParkingGarageError, self.garage.calculate_parking_fee, '12:22:09')
+
+    def test_open_garage_door(self):
+        res = self.garage.open_garage_door()
+        self.assertTrue(res)
