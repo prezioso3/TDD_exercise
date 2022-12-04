@@ -81,11 +81,16 @@ class ParkingGarage:
         minute_entry = int(entry_time[3] + entry_time[4])
 
         hours = hour_now - hour_entry
-        if minute_now - minute_entry > 0:
-            hours += 1
+        print(hours)
 
-        if hours < 0:
+        minutes = minute_now - minute_entry
+        print(minutes)
+
+        if hours < 0 or (hours <= 0 and (minutes <= 0)):
             raise ParkingGarageError
+
+        if minutes > 0:
+            hours += 1
 
         fee = hours * 2.50
 
