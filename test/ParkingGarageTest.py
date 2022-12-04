@@ -85,3 +85,7 @@ class ParkingGarageTest(unittest.TestCase):
     def test_close_garage_door(self):
         res = self.garage.close_garage_door()
         self.assertFalse(res)
+
+    def test_turn_light_on(self):
+        res = self.garage.turn_light_on()
+        self.assertTrue(res)
