@@ -119,7 +119,7 @@ class ParkingGarage:
         """
         Turns on the smart lightbulb
         """
-        pass
+        return True
 
     def turn_light_off(self) -> None:
         """
