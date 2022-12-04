@@ -29,6 +29,7 @@ class ParkingGarage:
         self.rtc = RTC(self.RTC_PIN)
         self.pwm = GPIO.PWM(self.SERVO_PIN, 50)
         self.pwm.start(0)
+        self.light_on = False
 
     def check_occupancy(self, pin: int) -> bool:
         """
@@ -119,7 +120,12 @@ class ParkingGarage:
         """
         Turns on the smart lightbulb
         """
-        return True
+        if (GPIO.input(self.INFRARED_PIN1) > 0 and self.light_on is False) or (GPIO.input(self.INFRARED_PIN2) > 0 and self.light_on is False) \
+                or (GPIO.input(self.INFRARED_PIN3) > 0 and self.light_on is False):
+            self.light_on = True
+            GPIO.output(self.LED_PIN, self.light_on)
+        else:
+            raise ParkingGarageError
 
     def turn_light_off(self) -> None:
         """
