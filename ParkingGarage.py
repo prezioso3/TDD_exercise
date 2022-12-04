@@ -84,6 +84,9 @@ class ParkingGarage:
         if minute_now - minute_entry > 0:
             hours += 1
 
+        if hours < 0:
+            raise ParkingGarageError
+
         fee = hours * 2.50
 
         if day in ['SATURDAY', 'SUNDAY']:
