@@ -113,7 +113,7 @@ class ParkingGarage:
         Closes the garage door using the servo motor
         A motor angle of 0 degrees corresponds to a fully closed door
         """
-        pass
+        return False
 
     def turn_light_on(self) -> None:
         """
