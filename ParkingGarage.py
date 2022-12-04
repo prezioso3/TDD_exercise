@@ -105,6 +105,7 @@ class ParkingGarage:
         Opens the garage door using the servo motor
         A motor angle of 180 degrees corresponds to a fully open door
         """
+
         return True
 
     def close_garage_door(self) -> None:
