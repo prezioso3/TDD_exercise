@@ -120,12 +120,13 @@ class ParkingGarage:
         """
         Turns on the smart lightbulb
         """
-        if (GPIO.input(self.INFRARED_PIN1) > 0 and self.light_on is False) or (GPIO.input(self.INFRARED_PIN2) > 0 and self.light_on is False) \
-                or (GPIO.input(self.INFRARED_PIN3) > 0 and self.light_on is False):
-            self.light_on = True
-            GPIO.output(self.LED_PIN, self.light_on)
-        else:
-            raise ParkingGarageError
+        for pin in [self.INFRARED_PIN1, self.INFRARED_PIN2, self.INFRARED_PIN3]:
+            if GPIO.input(pin) > 0:
+                GPIO.output(self.LED_PIN, GPIO.HIGH)
+                self.light_on = True
+            else:
+                GPIO.output(self.LED_PIN, GPIO.LOW)
+                self.light_on = False
 
     def turn_light_off(self) -> None:
         """

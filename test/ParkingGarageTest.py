@@ -79,21 +79,14 @@ class ParkingGarageTest(unittest.TestCase):
         self.assertRaises(ParkingGarageError, self.garage.calculate_parking_fee, '12:22:09')
 
     def test_open_garage_door(self):
-        res = self.garage.open_garage_door()
-        self.assertTrue(res)
+        self.garage.open_garage_door()
 
     def test_close_garage_door(self):
-        res = self.garage.close_garage_door()
-        self.assertFalse(res)
+        self.garage.close_garage_door()
 
     @patch.object(GPIO, "input")
     def test_turn_light_on_spot_1(self, mock_spot_value):
-        mock_spot_value.return_value = 2
-        res = self.garage.check_occupancy(self.garage.INFRARED_PIN1)
-        self.assertTrue(res)
+        mock_spot_value.return_value = 3
+        self.garage.turn_light_on()
+        self.assertTrue(self.garage.light_on)
 
-    @patch.object(GPIO, "input")
-    def test_turn_light_on_spot_2(self, mock_spot_value):
-        mock_spot_value.return_value = 4
-        res = self.garage.check_occupancy(self.garage.INFRARED_PIN2)
-        self.assertTrue(res)
